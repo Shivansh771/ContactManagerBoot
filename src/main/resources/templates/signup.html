@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeLeaf.org"
+  th:replace="base::Layout(~{::section})">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <section>
+      <div class="container rounded-5">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="mycard mt-1">
+              <div
+                th:if="${session.message}"
+                th:classappend="${session.message.getType}"
+                class="alert"
+              >
+                <p
+                  class="text-center"
+                  th:text="${session.message.getContent}"
+                ></p>
+              </div>
+              <div class="container text-center">
+                <img style="width: 80px" th:src="@{/img/register.png}" />
+              </div>
+              <h1 class="text-center">Register here!</h1>
+              <form
+                th:action="@{/do_register}"
+                method="post"
+                th:object="${user}"
+              >
+                <!-- name -->
+                <div class="form-group mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input
+                    name="name"
+                    type="text"
+                    th:value="${user.getName()}"
+                    class="form-control"
+                    id="name"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+                <div
+                  class="invalid-feedback"
+                  thth:each="e:${#fields.errors('name')}"
+                  th:text="${e}"
+                >
+                  Please choose a username.
+                </div>
+                <div class="form-group mb-3">
+                  <label for="name" class="form-label">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    th:value="${user.getEmail()}"
+                    class="form-control"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your Email"
+                    required
+                  />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="name" class="form-label">Password</label>
+                  <input
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter your Password"
+                    required
+                  />
+                </div>
+                <!-- about -->
+                <div class="form-group">
+                  <textarea
+                    name="about"
+                    th:text="${user.getAbout()}"
+                    placeholder="Enter something about yourself"
+                    rows="6"
+                    class="form-control"
+                  ></textarea>
+                </div>
+                <!-- terms -->
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    name="agreement"
+                    class="form-check-input"
+                    id="agreement"
+                  />
+                  <label for="agreement">Accept Terms and Conditions</label>
+                </div>
+                <div class="container text-center mt-3">
+                  <button class="btn bg-primary text-white" type="submit">
+                    Submit
+                  </button>
+                  <button class="btn btn-warning text-white" type="reset">
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

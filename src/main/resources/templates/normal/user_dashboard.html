@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"  th:replace="normal/base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <section>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-body my-5">
+                <div class="container text-center">
+                    <img style="height: 150px; width: 150px; border-radius: 50%;" th:src="@{'/img/contact_logo.png'}" alt="logo"></div>
+                    <h1 class="text-center text-secondary font-italic">
+                        Start Saving your contacts online
+                    </h1>
+                    <div class="d-grid gap-2">
+                    <a class="mt-4 btn btn-dark btn-block text-uppercase" th:href="@{/user/add-contact}" >Add new Contact</a></div>
+            </div>
+        </div>
+    </div>
+    
+    
+    </section>
+   
+</body>
+</html>

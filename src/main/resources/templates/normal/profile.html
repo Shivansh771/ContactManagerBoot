@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"  th:replace="normal/base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="card"><div class="card-body">
+            <div class="container text-center">
+            <img style="height: 150px; width: 150px; border-radius: 50%;" th:src="@{'/img/'+${user.getImageUrl()}}" alt="Profile Image"></div>
+            <h1 class="text-center mt-3" th:text="${user.getName()}"></h1>
+        <table class="table table-striped mt-4">
+            <tbody>
+                <tr>
+                    <th scope="row">#ID</th>
+                    <td th:text="${'SCMUSER' + user.getId()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td th:text="${user.getEmail()}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row">Role</th>
+                    <td th:text="${user.getRole()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">About you</th>
+                    <td th:text="${user.getAbout()}"></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div></div>
+    </div>
+    
+    
+    </section>
+   
+</body>
+</html>
